@@ -1,0 +1,62 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#hero {
+  display: flex;
+  background-color: blanchedalmond;
+  justify-content: center;
+}
+h1 {
+  border-color: black;
+  border-bottom: solid 5px black;
+}
+#about-me-btn {
+  position: fixed;
+  right: 0%;
+  bottom: 0%;
+  border-radius: 5em;
+  margin: 0 1.5em 1em 0;
+}
+#games-body {
+  display: grid;
+  grid-template-columns: 15em 15em 15em 15em;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.game-div {
+  margin: 10px 20px 10px 20px;
+  background-color: azure;
+  text-align: center;
+}
+#about-body {
+  display: grid;
+  grid-template-columns: 35rem 35rem;
+  justify-content: center;
+}
+h3,
+h2 {
+  display: inline-block;
+  border-bottom: solid 3px black;
+}
+#dog-table {
+  text-align: center;
+}
+table,
+th,
+td {
+  border: solid 2px black;
+}
+ul {
+  margin-top: -1em;
+}
+.list-things {
+  margin: 0 0 0 10em;
+}
+h2 {
+  margin-left: 6em;
+}
+.right-about {
+  margin: 0 10em 0 0;
+}

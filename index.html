@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hello Graham!!</title>
+    <link href="index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="hero">
+      <h1>Games</h1>
+      <button id="about-me-btn" onclick="location.href = 'about.html'">
+        About Me
+      </button>
+    </div>
+    <div id="games-body">
+      <div class="game-div">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVymHjCAg-XtHwM1qnlx3UQnfFp6nAgMy1Jz_zVcKgAQ&s" />
+        <p>in progress</p>
+      </div>
+    </div>
+    <script>
+      const body = document.querySelector("body");
+      const gameDiv = document.querySelector(".game-div");
+
+      for (let i = 0; i < 11; i++) {
+        let createdGameDiv = gameDiv.cloneNode(true);
+        document.querySelector("#games-body").appendChild(createdGameDiv);
+      }
+    </script>
+  </body>
+</html>
