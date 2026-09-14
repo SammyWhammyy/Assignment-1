@@ -1,151 +1,321 @@
-#id-logo {
-  border: none;
-  background-color: transparent;
-  margin-right: auto;
-  opacity: 1;
-}
-#hero {
-  display: flex;
-  justify-content: right;
-  background-color: rgb(255, 255, 255, 0.7);
-  position: absolute;
-  width: 100%;
-}
-.nav-button {
-  margin: 0 1em 0 1em;
-  border: none;
-  background-color: transparent;
-  font-size: 0.8em;
-  opacity: 0.4;
-}
-#about-nav {
-  opacity: 1;
-}
-#banner {
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 23em;
-}
-#banner-img {
-  background-repeat: no-repeat;
-  object-fit: cover;
-  z-index: -1;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-#company-name {
-  position: absolute;
-  color: black;
-  font-size: 2em;
-  background-color: white;
-}
-html,
-body {
-  height: 100%;
-  width: 100%;
+#p1 {
   margin: 0;
-}
-.div {
-  background-color: white;
-  display: flex;
-  height: 15em;
-}
-.div-words {
-  margin: 1.5em 7em 0 3em;
-  font-weight: 100;
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-}
-.img {
-  object-fit: contain;
-  height: 100%;
-}
-h1,
-p {
-  font-weight: inherit;
-  color: inherit;
-}
-#second-div-words p {
-  font-size: 1.15em;
-  line-height: 2;
-}
-#sketch {
-  margin-top: 2em;
-  object-fit: contain;
-  height: 60%;
-  width: 60%;
-}
-#third-div {
-  background-image: url("Images/Layer14copy.png");
-  background-size: 30em;
-  background-position: left;
-  background-repeat: no-repeat;
-  object-fit: contain;
-  background-color: #537abd;
-  color: white;
-  p {
-    color: rgb(0, 0, 0);
-  }
-  height: 17em;
-}
-#track-record-btn {
-  background-color: aliceblue;
-  width: fit-content;
-  border: 0 solid white;
-  padding: 0.1em;
-  border-radius: 10%;
-}
-a:link,
-a:visited {
-  text-decoration: none;
-  color: black;
-}
-.contacts {
-  height: 2em;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  width: 15.5em;
-  margin: 0.5em;
-}
-.contact-img {
-  object-fit: contain;
-  margin-right: 1em;
-}
-.list {
-  list-style-type: none;
-}
-#footer {
-  color: gray;
-  display: flex;
-  font-size: 0.6em;
-  background-image: url("Images/Layer17.png");
-}
-.list {
-  padding: 2em;
-  margin: 0 2em;
-}
-#copyright {
-  background-color: black;
-  color: gray;
-  text-align: center;
-  font-size: 1em;
-  height: 3em;
-  margin: 0;
-  p {
+  #other-page-btn {
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    border-radius: 5em;
+    margin: 0 1.5em 1em 0;
     margin: 0;
   }
+  #id-logo {
+    border: none;
+    background-color: transparent;
+    margin-right: auto;
+    opacity: 1;
+  }
+  #hero {
+    display: flex;
+    justify-content: right;
+    background-color: rgb(255, 255, 255, 0.7);
+    position: absolute;
+    width: 100%;
+  }
+  .nav-button {
+    margin: 0 1em 0 1em;
+    border: none;
+    background-color: transparent;
+    font-size: 0.8em;
+    opacity: 0.4;
+  }
+  #about-nav {
+    opacity: 1;
+  }
+  #banner {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 23em;
+  }
+  #banner-img {
+    background-repeat: no-repeat;
+    object-fit: cover;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  #company-name {
+    position: absolute;
+    color: black;
+    font-size: 2em;
+    background-color: white;
+  }
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+  .div {
+    background-color: white;
+    display: flex;
+    height: 15em;
+  }
+  .div-words {
+    margin: 1.5em 7em 0 3em;
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  .img {
+    object-fit: contain;
+    height: 100%;
+  }
+  h1,
+  p {
+    font-weight: inherit;
+    color: inherit;
+  }
+  #second-div-words p {
+    font-size: 1.15em;
+    line-height: 2;
+  }
+  #sketch {
+    margin-top: 2em;
+    object-fit: contain;
+    height: 60%;
+    width: 60%;
+  }
+  #third-div {
+    background-image: url("Images/Layer14copy.png");
+    background-size: 30em;
+    background-position: left;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    background-color: #537abd;
+    color: white;
+    p {
+      color: rgb(0, 0, 0);
+    }
+    height: 17em;
+  }
+  #track-record-btn {
+    background-color: aliceblue;
+    width: fit-content;
+    border: 0 solid white;
+    padding: 0.1em;
+    border-radius: 10%;
+  }
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: black;
+  }
+  .contacts {
+    height: 2em;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 15.5em;
+    margin: 0.5em;
+  }
+  .contact-img {
+    object-fit: contain;
+    margin-right: 1em;
+  }
+  .list {
+    list-style-type: none;
+  }
+  #footer {
+    color: gray;
+    display: flex;
+    font-size: 0.6em;
+    background-image: url("Images/Layer17.png");
+  }
+  .list {
+    padding: 2em;
+    margin: 0 2em;
+  }
+  #copyright {
+    background-color: black;
+    color: gray;
+    text-align: center;
+    font-size: 1em;
+    height: 3em;
+    margin: 0;
+    p {
+      margin: 0;
+    }
+  }
+  #socials-img {
+    margin-left: auto;
+    margin-right: 7em;
+  }
+  #zigzag {
+    position: absolute;
+    height: 15em;
+  }
 }
-#socials-img {
-  margin-left: auto;
-  margin-right: 7em;
-}
-#zigzag {
-  position: absolute;
-  height: 15em;
+#p2 {
+  margin: 0;
+  #other-page-btn {
+    position: fixed;
+    right: 2%;
+    bottom: 2%;
+    border-radius: 5em;
+    margin: 0 1.5em 1em 0;
+    margin: 0;
+  }
+  #id-logo {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    left: 50%;
+  }
+  #hero {
+    display: flex;
+    justify-content: right;
+    background-color: rgba(162, 122, 255, 0.7);
+    position: absolute;
+    width: 100%;
+  }
+  .nav-button {
+    border: none;
+    background-color: transparent;
+    font-size: 0.8em;
+    opacity: 0.4;
+  }
+  #about-nav {
+    opacity: 1;
+  }
+  #banner {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 23em;
+  }
+  #banner-img {
+    filter: hue-rotate(100deg);
+    background-repeat: no-repeat;
+    object-fit: cover;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  #company-name {
+    position: absolute;
+    color: black;
+    font-size: 2em;
+    background-color: white;
+  }
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+  }
+  .div {
+    background-color: rgb(161, 15, 130);
+    display: flex;
+    height: 15em;
+  }
+  .div-words {
+    margin: 1.5em 7em 0 3em;
+    font-weight: 100;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  .img {
+    object-fit: contain;
+    height: 100%;
+  }
+  h1,
+  p {
+    font-weight: inherit;
+    color: inherit;
+  }
+  #second-div-words p {
+    font-size: 1.15em;
+    line-height: 2;
+  }
+  #sketch {
+    margin-top: 2em;
+    object-fit: cover;
+    height: 60%;
+    width: 60%;
+  }
+  #third-div {
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiU3BVhfo-khNziUqFH_YzdVCpoHS5h7Xc58w144w9sjckGQN7mCEAvff79JdNtIj3IHz6MVdW4qNnPj_wuD3S8ZF6a-sa2i4EAjNXXvk&s=10");
+    background-size: 30em;
+    background-position: left;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    background-color: #614811;
+    color: white;
+    p {
+      color: rgb(0, 0, 0);
+    }
+    height: 17em;
+  }
+  #track-record-btn {
+    background-color: aliceblue;
+    width: fit-content;
+    border: 0 solid white;
+    padding: 0.1em;
+    border-radius: 10%;
+  }
+  a:link,
+  a:visited {
+    text-decoration: none;
+    color: black;
+  }
+  .contacts {
+    height: 2em;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 15.5em;
+    margin: 0.5em;
+  }
+  .contact-img {
+    object-fit: scale-down;
+    margin-right: 1em;
+  }
+  .list {
+    list-style-type: none;
+  }
+  #footer {
+    color: gray;
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.6em;
+    background-image: url("Images/Layer17.png");
+  }
+  .list {
+    padding: 2em;
+    margin: 0 2em;
+  }
+  #copyright {
+    background-color: black;
+    color: gray;
+    text-align: left;
+    font-size: 1em;
+    height: 3em;
+    margin: 0;
+    p {
+      margin: 0;
+    }
+  }
+  #zigzag {
+    position: absolute;
+    height: 15em;
+  }
 }

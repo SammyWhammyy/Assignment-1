@@ -9,20 +9,26 @@
       <button id="about-me-btn" onclick="location.href = 'index.html'">
         Games
       </button>
-      
+
       <h1>About Me</h1>
     </div>
     <div id="about-body">
       <div class="list-things">
-        <h2>About me</h3>
+        <div class="header">
+          <h2>About me</h2>
+          <button class="hide-btn">Hide</button>
+        </div>
         <p style="text-wrap: wrap">
           Hello, my name is Samantha Grindel and I love to program and adore
           animals. I am currently in Finland studying some web-design
           programming as an exchange student and will be back next year!
         </p>
       </div>
-      <div class="right-about">
-        <h2>Goals</h3>
+      <div class="list-things">
+        <div class="header">
+          <h2>Goals</h2>
+          <button class="hide-btn">Hide</button>
+        </div>
         <p>
           My goals are to learn as much as possible about coding as I know I
           love to do it however; I'm not quite sure what I want to focus on yet
@@ -32,7 +38,10 @@
         </p>
       </div>
       <div class="list-things">
-        <h3>Code Languages at Least Semi-Known</h3>
+        <div class="header">
+          <h3>Code Languages at Least Semi-Known</h3>
+          <button class="hide-btn">Hide</button>
+        </div>
         <ul>
           <li>C#</li>
           <li>Processing</li>
@@ -42,9 +51,35 @@
           <li>JavaScript</li>
         </ul>
       </div>
-      <div id="dog-table" class="right-about">
-        <h3>My Precious Little Dogs</h3>
-        <table>
+      <div class="list-things">
+        <div class="header">
+          <h3>Helpful learning links</h3>
+          <button class="hide-btn">Hide</button>
+        </div>
+        <ul>
+          <li>
+            <a href="https://scrimba.com/" target="_blank">Scrimba</a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/watch?v=EerdGm-ehJQ&list=WL&index=83&t=30613s"
+              target="_blank"
+              >This Youtube Video</a
+            >
+          </li>
+          <li>
+            <a href="https://www.w3schools.com/css/" target="_blank"
+              >w3schools</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="list-things">
+        <div class="header">
+          <h3>My Precious Little Dogs</h3>
+          <button class="hide-btn fun-stuff">Hide</button>
+        </div>
+        <table id="dog-table">
           <tr>
             <th>Name</th>
             <th>Color</th>
@@ -72,7 +107,10 @@
         </table>
       </div>
       <div class="list-things">
-        <h3>Games I love/Games I'd love to work on</h3>
+        <div class="header">
+          <h3>Games I love/Games I'd love to work on</h3>
+          <button class="hide-btn fun-stuff">Hide</button>
+        </div>
         <ul>
           <li>
             <a
@@ -132,26 +170,32 @@
           </li>
         </ul>
       </div>
-      <div class="right-about">
-        <h3>Helpful learning links</h3>
-        <ul>
-          <li>
-            <a href="https://scrimba.com/" target="_blank">Scrimba</a>
-          </li>
-          <li>
-            <a
-              href="https://www.youtube.com/watch?v=EerdGm-ehJQ&list=WL&index=83&t=30613s"
-              target="_blank"
-              >This Youtube Video</a
-            >
-          </li>
-          <li>
-            <a href="https://www.w3schools.com/css/" target="_blank"
-              >w3schools</a
-            >
-          </li>
-        </ul>
-      </div>
     </div>
   </body>
+  <script>
+    const elements = document.querySelectorAll(".hide-btn");
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].addEventListener("click", (event) => {
+        hideShowElement(elements[i]);
+      });
+    }
+    function hideShowElement(element) {
+      if (element.innerText == "Hide") {
+        element.parentElement.nextElementSibling.style.visibility = "collapse";
+        element.innerText = "Show";
+      } else {
+        element.parentElement.nextElementSibling.style.visibility = "visible";
+        element.innerText = "Hide";
+      }
+    }
+    const funStuff = document.querySelectorAll(".fun-stuff");
+    console.log(funStuff.length, funStuff);
+    for (let i = 0; i < funStuff.length; i++) {
+      hideFun(funStuff[i]);
+    }
+    function hideFun(element) {
+      element.parentElement.nextElementSibling.style.visibility = "collapse";
+      element.innerText = "Show";
+    }
+  </script>
 </html>

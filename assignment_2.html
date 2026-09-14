@@ -4,7 +4,8 @@
     <title>Assignment 2</title>
     <link href="assignment_2.css" rel="stylesheet" />
   </head>
-  <body>
+  <body id="p1">
+    <button id="other-page-btn" onclick="swapPages()">Other Page</button>
     <div id="hero">
       <button id="id-logo"><img src="Images/final1.png" alt="Logo" /></button>
       <button class="nav-button" id="about-nav">ABOUT</button>
@@ -21,7 +22,7 @@
         <h1>Welcome to Generic Company!</h1>
         <p id="welcome-p">
           We specialize in creating the highest-quality generic products in
-          Michigan, and we’ve been at it for a while. In fact, our products have
+          Michigan, and we've been at it for a while. In fact, our products have
           been recognized with a handful of awards and accolades.
         </p>
       </div>
@@ -32,10 +33,10 @@
     <div class="div" id="third-div">
       <img id="sketch" src="Images/sketch.png" />
       <div class="div-words">
-        <h1>We’re passionate about designing perfect products.</h1>
+        <h1>We're passionate about designing perfect products.</h1>
         <p>
           Our products are carefully engineered for reliability, efficiency, and
-          purity. We don’t settle for less.
+          purity. We don't settle for less.
         </p>
         <p>Check out our <a href="" id="track-record-btn">track record</a> .</p>
       </div>
@@ -88,4 +89,11 @@
       </div>
     </div>
   </body>
+  <script>
+    function swapPages() {
+      const page = document.body;
+      if (page.id == "p1") page.id = "p2";
+      else page.id = "p1";
+    }
+  </script>
 </html>

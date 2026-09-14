@@ -2,7 +2,6 @@ body {
   padding: 0;
   margin: 0;
 }
-
 #hero {
   display: flex;
   background-color: blanchedalmond;
@@ -31,9 +30,14 @@ h1 {
   text-align: center;
 }
 #about-body {
-  display: grid;
-  grid-template-columns: 35rem 35rem;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 h3,
 h2 {
@@ -49,16 +53,13 @@ td {
   border: solid 2px black;
 }
 ul {
-  margin-top: -1em;
+  margin-bottom: 1em;
 }
 .list-things {
-  margin: 0 0 0 10em;
-}
-h2 {
-  margin-left: 6em;
-}
-.right-about {
-  margin: 0 10em 0 0;
+  width: 35em;
+  margin: 0 2em;
+  display: flex;
+  flex-direction: column;
 }
 #assignment-btn {
   width: 10em;
@@ -70,4 +71,7 @@ h2 {
   color: white;
   font-weight: bold;
   margin: 2em 0 0 1.5em;
+}
+.hide-btn {
+  height: 50%;
 }
