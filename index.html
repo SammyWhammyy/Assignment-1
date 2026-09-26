@@ -20,8 +20,11 @@
     </div>
     <div id="games-body">
       <div class="game-div">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVymHjCAg-XtHwM1qnlx3UQnfFp6nAgMy1Jz_zVcKgAQ&s" />
+        <a href=""
+          ><img
+            class="game-img"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVymHjCAg-XtHwM1qnlx3UQnfFp6nAgMy1Jz_zVcKgAQ&s"
+        /></a>
         <p>in progress</p>
       </div>
     </div>
@@ -33,6 +36,12 @@
         let createdGameDiv = gameDiv.cloneNode(true);
         document.querySelector("#games-body").appendChild(createdGameDiv);
       }
+      const games = document.getElementsByClassName("game-div");
+      const gamesInnards = games[0].children;
+      gamesInnards[0].innerHTML =
+        "<img class='game-img' src='Images/GIPF.png' />";
+      gamesInnards[0].href = "game1.html";
+      gamesInnards[1].innerText = "GIPF";
     </script>
   </body>
 </html>

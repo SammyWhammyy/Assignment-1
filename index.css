@@ -24,6 +24,10 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
 }
+.game-img {
+  height: 150px;
+  object-fit: cover;
+}
 .game-div {
   margin: 10px 20px 10px 20px;
   background-color: azure;
