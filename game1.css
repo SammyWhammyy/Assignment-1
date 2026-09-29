@@ -20,3 +20,15 @@
 .possible {
   border: 5px solid yellow;
 }
+.red {
+  margin-top: -10px;
+  background-color: red;
+  border: 5px solid red;
+  border-radius: 10px;
+}
+.purple {
+  margin-top: -10px;
+  background-color: purple;
+  border: 5px solid purple;
+  border-radius: 10px;
+}

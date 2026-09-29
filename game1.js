@@ -5,34 +5,36 @@ function createBoard() {
   for (let i = 0; i < 5; i++) {
     const row = document.createElement("div");
     for (let j = 0; j < i; j++) {
+      const btn = document.createElement("button");
       if (j == 0 || j == i - 1) {
-        row.innerHTML += `<text class='dot outer top-slot' >${j}</text>`;
+        btn.classList.add("dot");
+        btn.classList.add("outer");
+        btn.classList.add("top-slot");
       } else {
-        const btn = document.createElement("button");
         btn.classList.add("dot");
         btn.classList.add("slot");
-        btn.innerHTML = indexOfSpot;
-        btn.dataset.position = `${indexOfSpot}`;
-        row.appendChild(btn);
       }
+      btn.innerHTML = indexOfSpot;
+      btn.dataset.position = `${indexOfSpot}`;
+      row.appendChild(btn);
       indexOfSpot++;
     }
     board.appendChild(row);
   }
   const row = document.createElement("div");
   for (let i = 0; i < 5; i++) {
-    if (i == 0) {
-      row.innerHTML += `<text class="dot outer corner">${i}</text>`;
-    } else if (i == 4) {
-      row.innerHTML += `<text class="dot outer corner">${i}</text>`;
+    const btn = document.createElement("button");
+    if (i == 0 || i == 4) {
+      btn.classList.add("dot");
+      btn.classList.add("outer");
+      btn.classList.add("corner");
     } else {
-      const btn = document.createElement("button");
       btn.classList.add("dot");
       btn.classList.add("slot");
-      btn.innerHTML = indexOfSpot;
-      btn.dataset.position = `${indexOfSpot}`;
-      row.appendChild(btn);
     }
+    btn.innerHTML = indexOfSpot;
+    btn.dataset.position = `${indexOfSpot}`;
+    row.appendChild(btn);
     indexOfSpot++;
   }
   board.appendChild(row);
@@ -52,22 +54,26 @@ function createBoard() {
     board.appendChild(row4);
     const row5 = document.createElement("div");
     for (let j = 0; j < 5; j++) {
-      if (j == 0 && i == 3) {
-        row5.innerHTML += `<text class='dot outer corner' >${j}</text>`;
-      } else if (j == 4 && i == 3) {
-        row5.innerHTML += `<text class='dot outer  corner' >${j}</text>`;
+      const btn = document.createElement("button");
+      if ((j == 0 && i == 3) || (j == 4 && i == 3)) {
+        btn.classList.add("dot");
+        btn.classList.add("outer");
+        btn.classList.add("corner");
       } else if (j == 0) {
-        row5.innerHTML += `<text class='dot outer left-slot' >${j}</text>`;
+        btn.classList.add("dot");
+        btn.classList.add("outer");
+        btn.classList.add("left-slot");
       } else if (j == 4 && i != 3) {
-        row5.innerHTML += `<text class='dot outer right-slot' >${j}</text>`;
+        btn.classList.add("dot");
+        btn.classList.add("outer");
+        btn.classList.add("right-slot");
       } else {
-        const btn = document.createElement("button");
         btn.classList.add("dot");
         btn.classList.add("slot");
-        btn.innerHTML = indexOfSpot;
-        btn.dataset.position = `${indexOfSpot}`;
-        row5.appendChild(btn);
       }
+      btn.innerHTML = indexOfSpot;
+      btn.dataset.position = `${indexOfSpot}`;
+      row5.appendChild(btn);
       indexOfSpot++;
     }
     board.appendChild(row5);
@@ -75,17 +81,19 @@ function createBoard() {
   for (let i = 4; i >= 0; i--) {
     const row = document.createElement("div");
     for (let j = 0; j < i; j++) {
+      const btn = document.createElement("button");
       if (j == 0 || j == i - 1) {
-        row.innerHTML += `<text class='dot outer  bottom-slot' >${j}</text>`;
+        btn.classList.add("dot");
+        btn.classList.add("outer");
+        btn.classList.add("bottom-slot");
       } else {
-        const btn = document.createElement("button");
         btn.classList.add("dot");
         btn.classList.add("slot");
-        btn.innerHTML = indexOfSpot;
-        btn.dataset.position = `${indexOfSpot}`;
-        row.appendChild(btn);
-        indexOfSpot++;
       }
+      btn.innerHTML = indexOfSpot;
+      btn.dataset.position = `${indexOfSpot}`;
+      row.appendChild(btn);
+      indexOfSpot++;
     }
     board.appendChild(row);
   }
@@ -160,56 +168,65 @@ function drawLine(x1, y1, x2, y2) {
   lines.appendChild(newLine);
 }
 createBoard();
-document.getElementById("start-game").addEventListener("click", setUpGame());
+document.getElementById("start-game").addEventListener("click", setUpGame);
 let player1Pieces = 15;
 let player2Pieces = 15;
 
 function setUpGame() {
-  const slots = document.getElementsByClassName("slot");
-  for (let i = 0; i < slots.length; i++) {
-    slots[i].addEventListener("click", handleClick);
+  document.querySelector(`[data-position="${56}"]`).classList.add("red");
+  document.querySelector(`[data-position="${15}"]`).classList.add("red");
+  document.querySelector(`[data-position="${18}"]`).classList.add("red");
+  document.querySelector(`[data-position="${42}"]`).classList.add("purple");
+  document.querySelector(`[data-position="${4}"]`).classList.add("purple");
+  document.querySelector(`[data-position="${45}"]`).classList.add("purple");
+  const outerSlots = document.getElementsByClassName("outer");
+  for (let i = 0; i < outerSlots.length; i++) {
+    outerSlots[i].addEventListener("click", handleClick);
   }
   console.log("hello");
 }
-
+const linesData = {
+  line0: [0, 4, 12, 21, 30, 39, 48, 56, 60],
+  line1: [1, 7, 16, 25, 34, 43, 52, 58],
+  line2: [2, 8, 17, 26, 35, 44, 53, 59],
+  line3: [3, 11, 20, 29, 38, 47, 55],
+  line5: [5, 13, 22, 31, 40, 49, 54],
+  line6: [6, 15, 24, 33, 42, 51],
+  line9: [9, 18, 27, 36, 45, 54],
+  line10: [10, 15, 20, 25, 30, 35, 40, 45, 50],
+  line14: [14, 18, 22, 26, 30, 34, 38, 42, 46],
+  line2a: [2, 4, 7, 11, 15, 19],
+  line23: [23, 27, 31, 35, 39, 43, 47, 51],
+  line5a: [5, 8, 12, 16, 20, 24, 28],
+  line32: [32, 36, 40, 44, 48, 52, 55],
+  line9a: [9, 13, 17, 21, 25, 29, 33, 37],
+  line41: [41, 45, 49, 53, 56, 58],
+};
 const connections = {
-  4: [7, 12],
-  7: [16, 11, 4],
-  8: [12, 17],
-  11: [7, 15, 20],
-  12: [16, 4, 8, 21],
-  13: [17, 22],
-  15: [11, 20],
-  16: [20, 12, 7, 25],
-  17: [8, 26, 21, 13],
-  18: [22, 27],
-  20: [11, 16, 25, 29, 24, 15],
-  21: [16, 12, 17, 26, 30, 25],
-  22: [13, 18, 27, 31, 26, 17],
-  24: [20, 33],
-  25: [16, 21, 30, 34, 29, 20],
-  26: [17, 22, 31, 35, 30, 21],
-  27: [18, 31, 36],
-  29: [33, 20, 25, 28],
-  30: [21, 26, 35, 39, 34, 25],
-  31: [22, 27, 40, 35],
-  33: [24, 42, 29],
-  34: [25, 30, 38, 43],
-  35: [26, 31, 40, 44, 39, 30],
-  36: [27, 40, 45],
-  38: [29, 34, 42, 47],
-  39: [30, 35, 43, 48],
-  40: [31, 36, 45, 49, 44, 35],
-  42: [33, 38],
-  43: [34, 39, 47, 51],
-  44: [35, 40, 48, 52],
-  45: [36, 40, 49],
-  47: [38, 43],
-  48: [39, 44, 51, 53],
-  49: [44, 40, 45, 52],
-  51: [48, 43],
-  52: [53, 48, 44, 49],
-  53: [48, 52],
+  0: [4],
+  1: [7],
+  2: [4, 8],
+  3: [11],
+  5: [8, 13],
+  6: [15],
+  9: [13, 18],
+  10: [15],
+  14: [18],
+  19: [15],
+  23: [27],
+  28: [24],
+  32: [36],
+  37: [33],
+  41: [45],
+  46: [42],
+  50: [45],
+  51: [47, 42],
+  54: [45],
+  55: [47, 52],
+  57: [49],
+  58: [52, 56],
+  59: [53],
+  60: [56],
 };
 function clearOptions() {
   const options = document.querySelectorAll(".possible");
@@ -218,7 +235,6 @@ function clearOptions() {
     options[i].classList.remove("possible");
     options[i].removeEventListener("click", movePiece);
     delete options[i].dataset.start;
-    options[i].addEventListener("click", handleClick);
   }
 }
 function handleClick(event) {
@@ -246,5 +262,74 @@ function movePiece(event) {
     `[data-position="${goal.dataset.start}"]`,
   );
   console.log(start.dataset.position + " -> " + goal.dataset.position);
+  if (goal.classList.contains("red") || goal.classList.contains("purple")) {
+    console.log("CONTAINS");
+    if (!slideRow(start, goal)) {
+      return;
+    }
+  }
+  if (redTurn) {
+    goal.classList.add("red");
+  } else goal.classList.add("purple");
   clearOptions();
+  swapTurn();
+}
+let redTurn = true;
+function swapTurn() {
+  if (redTurn) {
+    redTurn = false;
+    document.getElementById("turn-text").innerText = "PURPLE TURN";
+  } else {
+    redTurn = true;
+    document.getElementById("turn-text").innerText = "RED TURN";
+  }
+}
+function slideRow(start, goal) {
+  if (goal.classList.contains("outer")) {
+    console.log("NO ROOM");
+    return false;
+  }
+  const newPosition = getDir(start, goal);
+
+  const nextSpot = document.querySelector(`[data-position="${newPosition}"]`);
+  if (
+    nextSpot.classList.contains("red") ||
+    nextSpot.classList.contains("purple")
+  ) {
+    if (!slideRow(goal, nextSpot)) return false;
+  }
+  if (start.classList.contains("red")) {
+    nextSpot.classList.add("red");
+    start.classList.remove("red");
+  } else {
+    nextSpot.classList.add("purple");
+    start.classList.remove("purple");
+  }
+  return true;
+}
+function getDir(start, goal) {
+  const startIndex = Number(start.dataset.position);
+  const goalIndex = Number(goal.dataset.position);
+
+  const linesObjects = Object.values(linesData);
+  for (let i = 0; i < linesObjects.length; i++) {
+    if (
+      linesObjects[i].includes(startIndex) &&
+      linesObjects[i].includes(goalIndex)
+    ) {
+      if (goalIndex > startIndex) {
+        for (let l = 0; l < linesObjects[i].length; l++) {
+          if (linesObjects[i][l] == goalIndex) {
+            return linesObjects[i][l + 1];
+          }
+        }
+      } else {
+        for (let l = 0; l < linesObjects[i].length; l++) {
+          if (linesObjects[i][l] == startIndex) {
+            return linesObjects[i][l - 1];
+          }
+        }
+      }
+    }
+  }
 }
