@@ -1,4 +1,5 @@
 let gameStarted = false;
+let redTurn = true;
 function createBoard() {
   const board = document.getElementById("board");
   let indexOfSpot = 0;
@@ -140,6 +141,7 @@ function createBoard() {
     drawLine(lineLoc[0], lineLoc[1], lineLoc[2], lineLoc[3]);
   }
 }
+//finds the next button on the line
 function findLoc(a, b) {
   const aDiv = a.getBoundingClientRect();
   const bDiv = b.getBoundingClientRect();
@@ -153,6 +155,7 @@ function findLoc(a, b) {
   const vector = [x1, y1, x2, y2];
   return vector;
 }
+//draws line from one end to other
 function drawLine(x1, y1, x2, y2) {
   const lines = document.getElementById("lines");
   const newLine = document.createElementNS(
@@ -168,11 +171,16 @@ function drawLine(x1, y1, x2, y2) {
   newLine.setAttribute("stroke-width", 3);
   lines.appendChild(newLine);
 }
+
+//calls create board
 createBoard();
+//add event listen for click on startgame
 document.getElementById("start-game").addEventListener("click", setUpGame);
+//i didnt get to this part
 let player1Pieces = 15;
 let player2Pieces = 15;
 
+//called when start game is clicked
 function setUpGame() {
   if (!gameStarted) {
     document.querySelector(`[data-position="${56}"]`).classList.add("red");
@@ -189,6 +197,8 @@ function setUpGame() {
   }
   gameStarted = true;
 }
+
+//the data table for storing the buttons in a line
 const linesData = {
   line0: [0, 4, 12, 21, 30, 39, 48, 56, 60],
   line1: [1, 7, 16, 25, 34, 43, 52, 58],
@@ -206,6 +216,8 @@ const linesData = {
   line9a: [9, 13, 17, 21, 25, 29, 33, 37],
   line41: [41, 45, 49, 53, 56, 58],
 };
+//data table for connections to outer circle
+//fun fact i did all butttons originally misunderstanding the game :(
 const connections = {
   0: [4],
   1: [7],
@@ -232,6 +244,7 @@ const connections = {
   59: [53],
   60: [56],
 };
+//clears the possible options glow
 function clearOptions() {
   const options = document.querySelectorAll(".possible");
   for (let i = 0; i < options.length; i++) {
@@ -241,10 +254,12 @@ function clearOptions() {
     delete options[i].dataset.start;
   }
 }
+//when you click on a border it highlights options
 function handleClick(event) {
   clearOptions();
   addOptions(event.currentTarget);
 }
+//backbone picking and highlighting the options
 function addOptions(start) {
   const options = getMoveOptions(start);
   for (let i = 0; i < options.length; i++) {
@@ -255,17 +270,18 @@ function addOptions(start) {
     option.addEventListener("click", movePiece);
   }
 }
+//returns the row out of the array of the button
 function getMoveOptions(start) {
   const position = start.dataset.position;
   console.log(connections[position]);
   return connections[position];
 }
+//moves the piece if an option is selected and checks if row needs to be slid ALSO checks if win and swaps turn
 function movePiece(event) {
   const goal = event.currentTarget;
   const start = document.querySelector(
     `[data-position="${goal.dataset.start}"]`,
   );
-  console.log(start.dataset.position + " -> " + goal.dataset.position);
   if (goal.classList.contains("red") || goal.classList.contains("purple")) {
     console.log("CONTAINS");
     if (!slideRow(start, goal)) {
@@ -279,7 +295,7 @@ function movePiece(event) {
   swapTurn();
   checkWin();
 }
-let redTurn = true;
+//swaps the turn with simple bool
 function swapTurn() {
   if (redTurn) {
     redTurn = false;
@@ -289,20 +305,23 @@ function swapTurn() {
     document.getElementById("turn-text").innerText = "RED TURN";
   }
 }
+//slides the row unless the row is full
 function slideRow(start, goal) {
+  //checks if goal is possible
   if (goal.classList.contains("outer")) return false;
-
   const newPosition = getDir(start, goal);
-
   const nextSpot = document.querySelector(`[data-position="${newPosition}"]`);
 
+  //checks if can slide
   if (nextSpot.classList.contains("outer")) return false;
+  //if full and no room return false
   if (
     nextSpot.classList.contains("red") ||
     nextSpot.classList.contains("purple")
   ) {
     if (!slideRow(goal, nextSpot)) return false;
   }
+  //moves the class forward
   if (goal.classList.contains("red")) {
     nextSpot.classList.add("red");
     goal.classList.remove("red");
@@ -312,6 +331,7 @@ function slideRow(start, goal) {
   }
   return true;
 }
+//gets the direction on the line it needs to move by giving the next position
 function getDir(start, goal) {
   const startIndex = Number(start.dataset.position);
   const goalIndex = Number(goal.dataset.position);
@@ -338,13 +358,14 @@ function getDir(start, goal) {
     }
   }
 }
+//if won change text and bg color
 function checkWin() {
   if (haveWon()) {
     document.getElementById("turn-text").innerText = `${haveWon()} WINS`;
     document.getElementById("turn-text").classList.add(haveWon());
   }
 }
-
+//checks if youve won by looping through all the line arrays and checking for 4 in a row
 function haveWon() {
   const linesObjects = Object.values(linesData);
   for (let i = 0; i < linesObjects.length; i++) {
@@ -366,3 +387,4 @@ function haveWon() {
   }
   return null;
 }
+//gg
