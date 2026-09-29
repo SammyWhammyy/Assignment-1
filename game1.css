@@ -17,3 +17,6 @@
   border-radius: 1em;
   font-size: 0.8em;
 }
+.possible {
+  border: 5px solid yellow;
+}
