@@ -1,40 +1,74 @@
 function createBoard() {
   const board = document.getElementById("board");
+
+  //create the buttons
   for (let i = 0; i < 5; i++) {
     const row = document.createElement("div");
     for (let j = 0; j < i; j++) {
       if (j == 0 || j == i - 1) {
-        row.innerHTML += `<button class='slot top-slot' >${j}</button>`;
-      } else row.innerHTML += `<button class='slot' >${j}</button>`;
+        row.innerHTML += `<text class='dot outer top-slot' >${j}</text>`;
+      } else {
+        const btn = document.createElement("button");
+        btn.classList.add("dot");
+        btn.classList.add("slot");
+        btn.innerHTML = i + " " + j;
+        btn.dataset.row = i;
+        btn.dataset.column = j;
+        row.appendChild(btn);
+      }
     }
     board.appendChild(row);
   }
   const row = document.createElement("div");
   for (let i = 0; i < 5; i++) {
     if (i == 0) {
-      row.innerHTML += `<button class="slot corner">${i}</button>`;
+      row.innerHTML += `<text class="dot outer corner">${i}</text>`;
     } else if (i == 4) {
-      row.innerHTML += `<button class="slot corner">${i}</button>`;
-    } else row.innerHTML += `<button class='slot'>${i}</button>`;
+      row.innerHTML += `<text class="dot outer corner">${i}</text>`;
+    } else {
+      const btn = document.createElement("button");
+      btn.classList.add("dot");
+      btn.classList.add("slot");
+      btn.innerHTML = 5 + " " + i;
+      btn.dataset.row = 5;
+      btn.dataset.column = i;
+      row.appendChild(btn);
+    }
   }
   board.appendChild(row);
   for (let i = 0; i < 4; i++) {
     const row4 = document.createElement("div");
     for (let j = 0; j < 4; j++) {
-      row4.innerHTML += `<button class='slot' >${j}</button>`;
+      {
+        const btn = document.createElement("button");
+        btn.classList.add("dot");
+        btn.classList.add("slot");
+        btn.innerHTML = i + " " + j;
+        btn.dataset.row = i;
+        btn.dataset.column = j;
+        row4.appendChild(btn);
+      }
     }
     board.appendChild(row4);
     const row5 = document.createElement("div");
     for (let j = 0; j < 5; j++) {
       if (j == 0 && i == 3) {
-        row5.innerHTML += `<button class='slot corner' >${j}</button>`;
+        row5.innerHTML += `<text class='dot outer corner' >${j}</text>`;
       } else if (j == 4 && i == 3) {
-        row5.innerHTML += `<button class='slot corner' >${j}</button>`;
+        row5.innerHTML += `<text class='dot outer  corner' >${j}</text>`;
       } else if (j == 0) {
-        row5.innerHTML += `<button class='slot left-slot' >${j}</button>`;
+        row5.innerHTML += `<text class='dot outer left-slot' >${j}</text>`;
       } else if (j == 4 && i != 3) {
-        row5.innerHTML += `<button class='slot right-slot' >${j}</button>`;
-      } else row5.innerHTML += `<button class='slot' >${j}</button>`;
+        row5.innerHTML += `<text class='dot outer right-slot' >${j}</text>`;
+      } else {
+        const btn = document.createElement("button");
+        btn.classList.add("dot");
+        btn.classList.add("slot");
+        btn.innerHTML = i + " " + j;
+        btn.dataset.row = i;
+        btn.dataset.column = j;
+        row5.appendChild(btn);
+      }
     }
     board.appendChild(row5);
   }
@@ -42,11 +76,21 @@ function createBoard() {
     const row = document.createElement("div");
     for (let j = 0; j < i; j++) {
       if (j == 0 || j == i - 1) {
-        row.innerHTML += `<button class='slot bottom-slot' >${j}</button>`;
-      } else row.innerHTML += `<button class='slot' >${j}</button>`;
+        row.innerHTML += `<text class='dot outer  bottom-slot' >${j}</text>`;
+      } else {
+        const btn = document.createElement("button");
+        btn.classList.add("dot");
+        btn.classList.add("slot");
+        btn.innerHTML = i + " " + j;
+        btn.dataset.row = i;
+        btn.dataset.column = j;
+        row.appendChild(btn);
+      }
     }
     board.appendChild(row);
   }
+  // DRAW LINES
+
   const topBtns = document.getElementsByClassName("top-slot");
   const bottomBtns = document.getElementsByClassName("bottom-slot");
   const leftBtns = document.getElementsByClassName("left-slot");
@@ -106,12 +150,16 @@ function drawLine(x1, y1, x2, y2) {
     "line",
   );
 
-  newLine.setAttribute("x1", x1);
-  newLine.setAttribute("y1", y1);
-  newLine.setAttribute("x2", x2);
-  newLine.setAttribute("y2", y2);
+  newLine.setAttribute("x1", x1 + 5);
+  newLine.setAttribute("y1", y1 + 2);
+  newLine.setAttribute("x2", x2 + 5);
+  newLine.setAttribute("y2", y2 + 2);
   newLine.setAttribute("stroke", "black");
   newLine.setAttribute("stroke-width", 3);
   lines.appendChild(newLine);
 }
 createBoard();
+let player1Pieces = 15;
+let player2Pieces = 15;
+
+function setUpGame() {}

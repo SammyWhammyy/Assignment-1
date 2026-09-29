@@ -1,20 +1,8 @@
 #board {
   text-align: center;
 }
-.slot {
+.dot {
   margin: 5px 50px;
-}
-.top-slot {
-  color: aqua;
-}
-.bottom-slot {
-  color: brown;
-}
-.corner {
-  color: blueviolet;
-}
-.left-slot {
-  color: blue;
 }
 #lines {
   position: absolute;
@@ -24,6 +12,8 @@
   height: 100%;
   z-index: -1;
 }
-.right-slot {
-  color: blue;
+.outer {
+  background-color: black;
+  border-radius: 1em;
+  font-size: 0.8em;
 }
