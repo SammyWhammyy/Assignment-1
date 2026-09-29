@@ -1,3 +1,4 @@
+let gameStarted = false;
 function createBoard() {
   const board = document.getElementById("board");
   let indexOfSpot = 0;
@@ -173,17 +174,20 @@ let player1Pieces = 15;
 let player2Pieces = 15;
 
 function setUpGame() {
-  document.querySelector(`[data-position="${56}"]`).classList.add("red");
-  document.querySelector(`[data-position="${15}"]`).classList.add("red");
-  document.querySelector(`[data-position="${18}"]`).classList.add("red");
-  document.querySelector(`[data-position="${42}"]`).classList.add("purple");
-  document.querySelector(`[data-position="${4}"]`).classList.add("purple");
-  document.querySelector(`[data-position="${45}"]`).classList.add("purple");
-  const outerSlots = document.getElementsByClassName("outer");
-  for (let i = 0; i < outerSlots.length; i++) {
-    outerSlots[i].addEventListener("click", handleClick);
+  if (!gameStarted) {
+    document.querySelector(`[data-position="${56}"]`).classList.add("red");
+    document.querySelector(`[data-position="${15}"]`).classList.add("red");
+    document.querySelector(`[data-position="${18}"]`).classList.add("red");
+    document.querySelector(`[data-position="${42}"]`).classList.add("purple");
+    document.querySelector(`[data-position="${4}"]`).classList.add("purple");
+    document.querySelector(`[data-position="${45}"]`).classList.add("purple");
+    const outerSlots = document.getElementsByClassName("outer");
+    for (let i = 0; i < outerSlots.length; i++) {
+      outerSlots[i].addEventListener("click", handleClick);
+    }
+    console.log("hello");
   }
-  console.log("hello");
+  gameStarted = true;
 }
 const linesData = {
   line0: [0, 4, 12, 21, 30, 39, 48, 56, 60],
@@ -273,6 +277,7 @@ function movePiece(event) {
   } else goal.classList.add("purple");
   clearOptions();
   swapTurn();
+  checkWin();
 }
 let redTurn = true;
 function swapTurn() {
@@ -285,25 +290,25 @@ function swapTurn() {
   }
 }
 function slideRow(start, goal) {
-  if (goal.classList.contains("outer")) {
-    console.log("NO ROOM");
-    return false;
-  }
+  if (goal.classList.contains("outer")) return false;
+
   const newPosition = getDir(start, goal);
 
   const nextSpot = document.querySelector(`[data-position="${newPosition}"]`);
+
+  if (nextSpot.classList.contains("outer")) return false;
   if (
     nextSpot.classList.contains("red") ||
     nextSpot.classList.contains("purple")
   ) {
     if (!slideRow(goal, nextSpot)) return false;
   }
-  if (start.classList.contains("red")) {
+  if (goal.classList.contains("red")) {
     nextSpot.classList.add("red");
-    start.classList.remove("red");
+    goal.classList.remove("red");
   } else {
     nextSpot.classList.add("purple");
-    start.classList.remove("purple");
+    goal.classList.remove("purple");
   }
   return true;
 }
@@ -325,11 +330,39 @@ function getDir(start, goal) {
         }
       } else {
         for (let l = 0; l < linesObjects[i].length; l++) {
-          if (linesObjects[i][l] == startIndex) {
+          if (linesObjects[i][l] == goalIndex) {
             return linesObjects[i][l - 1];
           }
         }
       }
     }
   }
+}
+function checkWin() {
+  if (haveWon()) {
+    document.getElementById("turn-text").innerText = `${haveWon()} WINS`;
+    document.getElementById("turn-text").classList.add(haveWon());
+  }
+}
+
+function haveWon() {
+  const linesObjects = Object.values(linesData);
+  for (let i = 0; i < linesObjects.length; i++) {
+    let redCount = 0;
+    let purpleCount = 0;
+    for (let l = 0; l < linesObjects[i].length; l++) {
+      const spot = document.querySelector(
+        `[data-position="${linesObjects[i][l]}"]`,
+      );
+      if (spot.classList.contains("red")) {
+        redCount++;
+        if (redCount >= 4) return "red";
+      } else redCount = 0;
+      if (spot.classList.contains("purple")) {
+        purpleCount++;
+        if (purpleCount >= 4) return "purple";
+      } else purpleCount = 0;
+    }
+  }
+  return null;
 }
