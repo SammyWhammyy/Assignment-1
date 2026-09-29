@@ -1,6 +1,7 @@
 function createBoard() {
   const board = document.getElementById("board");
-
+  let rowOnBoard = -3;
+  let columnOnBoard = -1;
   //create the buttons
   for (let i = 0; i < 5; i++) {
     const row = document.createElement("div");
@@ -11,13 +12,15 @@ function createBoard() {
         const btn = document.createElement("button");
         btn.classList.add("dot");
         btn.classList.add("slot");
-        btn.innerHTML = i + " " + j;
-        btn.dataset.row = i;
-        btn.dataset.column = j;
+        btn.innerHTML = rowOnBoard + " " + columnOnBoard;
+        btn.dataset.position = `${rowOnBoard},${columnOnBoard}`;
         row.appendChild(btn);
       }
+      columnOnBoard++;
     }
     board.appendChild(row);
+    rowOnBoard++;
+    columnOnBoard = -1;
   }
   const row = document.createElement("div");
   for (let i = 0; i < 5; i++) {
@@ -29,12 +32,14 @@ function createBoard() {
       const btn = document.createElement("button");
       btn.classList.add("dot");
       btn.classList.add("slot");
-      btn.innerHTML = 5 + " " + i;
-      btn.dataset.row = 5;
-      btn.dataset.column = i;
+      btn.innerHTML = rowOnBoard + " " + columnOnBoard;
+      btn.dataset.position = `${rowOnBoard},${columnOnBoard}`;
       row.appendChild(btn);
     }
+    columnOnBoard++;
   }
+  rowOnBoard++;
+  columnOnBoard = 0;
   board.appendChild(row);
   for (let i = 0; i < 4; i++) {
     const row4 = document.createElement("div");
@@ -43,12 +48,13 @@ function createBoard() {
         const btn = document.createElement("button");
         btn.classList.add("dot");
         btn.classList.add("slot");
-        btn.innerHTML = i + " " + j;
-        btn.dataset.row = i;
-        btn.dataset.column = j;
+        btn.innerHTML = rowOnBoard + " " + columnOnBoard;
+        btn.dataset.position = `${rowOnBoard},${columnOnBoard}`;
         row4.appendChild(btn);
       }
+      columnOnBoard++;
     }
+    columnOnBoard = -1;
     board.appendChild(row4);
     const row5 = document.createElement("div");
     for (let j = 0; j < 5; j++) {
@@ -64,13 +70,15 @@ function createBoard() {
         const btn = document.createElement("button");
         btn.classList.add("dot");
         btn.classList.add("slot");
-        btn.innerHTML = i + " " + j;
-        btn.dataset.row = i;
-        btn.dataset.column = j;
+        btn.innerHTML = rowOnBoard + " " + columnOnBoard;
+        btn.dataset.position = `${rowOnBoard},${columnOnBoard}`;
         row5.appendChild(btn);
       }
+      columnOnBoard++;
     }
     board.appendChild(row5);
+    rowOnBoard++;
+    columnOnBoard = 0;
   }
   for (let i = 4; i >= 0; i--) {
     const row = document.createElement("div");
@@ -81,13 +89,15 @@ function createBoard() {
         const btn = document.createElement("button");
         btn.classList.add("dot");
         btn.classList.add("slot");
-        btn.innerHTML = i + " " + j;
-        btn.dataset.row = i;
-        btn.dataset.column = j;
+        btn.innerHTML = rowOnBoard + " " + columnOnBoard;
+        btn.dataset.position = `${rowOnBoard},${columnOnBoard}`;
         row.appendChild(btn);
       }
+      columnOnBoard++;
     }
     board.appendChild(row);
+    rowOnBoard++;
+    columnOnBoard = -1;
   }
   // DRAW LINES
 
