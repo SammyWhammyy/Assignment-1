@@ -9,7 +9,7 @@
       <div>
         <button
           id="assignment-btn"
-          onclick="location.href = 'assignment_2.html'">
+          onclick="location.href = 'Assignment2/assignment_2.html'">
           Assignment 2
         </button>
         <h1>Games</h1>
@@ -27,6 +27,12 @@
         /></a>
         <p>in progress</p>
       </div>
+      <div class="game-div">
+        <a href="/Game1/game1.html"
+          ><img class="game-img" src="Images/GIPF.png"
+        /></a>
+        <p>GIPF</p>
+      </div>
     </div>
     <script>
       const body = document.querySelector("body");
@@ -36,12 +42,6 @@
         let createdGameDiv = gameDiv.cloneNode(true);
         document.querySelector("#games-body").appendChild(createdGameDiv);
       }
-      const games = document.getElementsByClassName("game-div");
-      const gamesInnards = games[0].children;
-      gamesInnards[0].innerHTML =
-        "<img class='game-img' src='Images/GIPF.png' />";
-      gamesInnards[0].href = "game1.html";
-      gamesInnards[1].innerText = "GIPF";
     </script>
   </body>
 </html>
