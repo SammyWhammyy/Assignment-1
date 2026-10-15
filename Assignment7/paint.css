@@ -1,0 +1,25 @@
+#board {
+  border: 1px solid black;
+  background: white;
+  cursor: crosshair;
+}
+#shape-div {
+  display: flex;
+  flex-direction: column;
+  width: 223px;
+}
+#toolbar {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.shape-btn {
+  float: left;
+  width: 50%;
+}
+#key-pressed {
+  display: none;
+}
+#mm-btn {
+  width: 100%;
+}
