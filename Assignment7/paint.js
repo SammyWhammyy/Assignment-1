@@ -57,6 +57,9 @@ function keyPressed(e) {
     case "t":
       setCircleMode();
       break;
+    case "m":
+      setMMMode();
+      break;
     default:
       return;
   }
